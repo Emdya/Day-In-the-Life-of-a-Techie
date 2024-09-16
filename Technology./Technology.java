@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.HashMap;
 public class Technology {
     public static void main (String[]args) { //Main method will use switch case statements, to display a menu of options.
         Scanner input = new Scanner(System.in);
@@ -124,10 +125,23 @@ public class Technology {
     }
     public static void phoneNumbers(){ //Method for formatting a phone number to " xxx xxx-xxxx"
         Scanner input = new Scanner(System.in);
+        HashMap <Long, String> areaCodeMap = new HashMap<>();
         long phoneNumber, lineNumber, prefix, areaCode;
+        //A map with example area codes and descriptions
+        areaCodeMap.put(305L, "Miami, Florida");
+        areaCodeMap.put(212L, "New York City, New York");
+        areaCodeMap.put(702L, "Las Vegas, Nevada");
+        areaCodeMap.put(202L, "Washington, DC");
+        areaCodeMap.put(310L, "Los Angeles, California");
+        areaCodeMap.put(949L, "Irvine, California");
+        areaCodeMap.put(727L, "Boca Raton, Florida");
+        areaCodeMap.put(321L, "Cocoa, Florida");
+        areaCodeMap.put(386L, "Daytona");
+        areaCodeMap.put(863L, "Avon Park, Florida");
+        areaCodeMap.put(561L, "Boynton Beach, Florida");
+
         System.out.println("Enter your phone number(10 digits)");
         phoneNumber = input.nextLong();
-
         lineNumber = phoneNumber % 10000;
         phoneNumber/= 10000;
         prefix = phoneNumber % 1000;
@@ -135,6 +149,12 @@ public class Technology {
         areaCode = phoneNumber;
 
         System.out.println("You can contact the hacker at: (" + areaCode + ")" + prefix + "-" + lineNumber);
+        if(areaCodeMap.containsKey(areaCode)){
+            System.out.println("Area Code " + areaCode + " corresponds to " + areaCodeMap.get(areaCode));
+        }
+        else{
+            System.out.println("Area Code " + areaCode + " not found in the map");
+        }
     }
     public static void weekendProject(){ //Method for a 3D-printed Polygon design. Method provides the area measurements, utilizing the formula for the area of a polygon.
         Scanner input = new Scanner(System.in);
